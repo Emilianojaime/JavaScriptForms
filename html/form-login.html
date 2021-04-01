@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="..//css/reset.css">
-	<link rel="stylesheet" href="..//css/style.css">
-	<title>Login Form</title>
-</head>
-<body>
-	<main>
-		<form action="" class="form" id="form">	
-			
-			<div class="formulario__group" id="group__fullname">
-					<label for="fullname" class="form__label">Full name</label>
-						<input type="text" class="form__input" name="fullname" id="fullname" placeholder="Insert Your Full Name Here">
-			</div>
-
-			<div class="formulario__group" id="group__email">
-				<label for="email" class="form__label">E-Mail</label>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<title>
+			Login Form
+		</title>
+	</head>
+	<body>
+		<main>
+			<form  class="form" id="form">	
+				
+				<div class="formulario__group" id="group__email">
+					<label for="email" class="form__label">
+						E-Mail
+					</label>
 					<input type="email" class="form__input" name="email" id="email" placeholder="Insert Your E-mail Here">
-			</div>
+				</div>
 
-			<div class="formulario__group" id="group__password">
-				<label for="password" class="form__label">Password</label>
+				<div class="formulario__group" id="group__password">
+					<label for="password" class="form__label">
+						Password
+					</label>
 					<input type="password" class="form__input" name="password" id="password" >
-			</div>
+				</div>
 
-			<div class="formulario__group" id="group__repeat-password">
-				<label for="repeat-password" class="form__label">Repeat Password</label>
-					<input type="password" class="form__input" name="repeat-password" id="repeat-password">
-			</div>
+				<a href="..//html/form-register.html"> 
+					¿You are not register? Click Here
+				</a>
 
-			<a href="..//html/form-register.html"> ¿You are not register? Click Here</a>
+				<div class="form__message" id="form__message">
+					<p class="form__input-error"> 
+						<b>Error:</b> Not a valid username
+						<b>Error:</b> Incorrect password
+					</p>
+				</div>
 
-			<div class="form_message" id="form_message">
-				<p class="form__input-error"> 
-					<b>Error:</b> The full name must have at least 3 letters and cannot contain symbols 
-				</p>
-			</div>
-
-			<div class="form__group form__group-btn-send">
-				<button type="submit" class="form__btn">
-					Login
-				</button>		
-			</div>
-		</form>
-	</main>	
-<script src="..//js/login.js"></script>    
-</body>
+				<div class="form__group form__group-btn-send">
+					<button type="submit" class="form__btn">
+						Login
+					</button>		
+				</div>
+				
+			</form>
+		</main>	
+	<script src="..//js/login.js"></script>    
+	</body>
 </html>
