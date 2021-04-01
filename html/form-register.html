@@ -4,9 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..//css/reset.css">
+	<link rel="stylesheet" href="..//css/style.css">
     <title>Register Form</title>
 </head>
 <body>
+	<main>
+		<form action="" class="form" id="form">	
+			<div>
+				<p class="form__input-error"> 
+					Not a valid username 
+				</p>
+				<p class="form__input-error"> 
+					Incorrect password 
+				</p>
+			</div>
+
+			<div class="formulario__group" id="group__email">
+				<label for="email" class="form__label">E-Mail</label>
+					<input type="email" class="form__input" name="email" id="email" placeholder="Insert Your E-mail Here">
+			</div>
+
+			<div class="formulario__group" id="group__password">
+				<label for="password" class="form__label">Password</label>
+					<input type="password" class="form__input" name="password" id="password" >
+			</div>
+
+			<a href="..//html/form-login.html"> ¿Already Register? Click Here</a>
+
+			<div class="form_message" id="form_message">
+				<p class="form__input-error"> <b>Error:</b> The full name must have at least 3 letters and cannot contain symbols </p>
+				<p class="form__input-error"> <b>Error:</b> The email must be in the format email@yourserviceprovider.com </p>
+				<p class="form__input-error"> <b>Error:</b> The password must contain at least 4 characters </p>
+				<p class="form__input-error"> <b>Error:</b> Password is not the same </p>
+			</div>
+
+			<div class="form__group form__group-btn-send">
+				<button type="submit" class="form__btn">
+					Send
+				</button>		
+			</div>
+
+			<div class="form__group form__group-btn-send">
+				<button type="reset" class="form__btn">
+					Reset Fields
+				</button>
+			</div>
+
+		</form>
+	</main>	
+    
 <script src="..//js/register.js"></script>
 </body>
 </html>
