@@ -45,16 +45,25 @@ main {
 	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
 }
 
-.form__input-error {
+.error__name,
+.error__email,
+.error__password,
+.error__repeat-password,
+.error__missing-inputs {
 	font-size: 12px;
 	margin-bottom: 0;
 	display: none;
 }
 
-.form__input-error-active {
+.error__name-active,
+.error__email-active,
+.error__password-active,
+.error__repeat-password-active,
+.error__missing-inputs-active {
 	display: block;
 }
 
+/*    ----------------------------------*/
 .form__message,
 .form a, 
 .form__group-btn-send,
@@ -103,7 +112,7 @@ main {
 	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
 }
 
-.form__message-form-sent {
+.form__message-sent {
 	display: none;
 	grid-column: span 2;
 	text-align: center;
@@ -111,7 +120,7 @@ main {
 	color: #0b6100;
 }
 
-.form__mensaje-exito-active {
+.form__message-sent-active {
 	display: block;
 }
 

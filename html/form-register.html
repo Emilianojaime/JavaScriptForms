@@ -47,17 +47,20 @@
 				</a>
 
 				<div class="form__message" id="form__message">
-					<p class="form__input-error"> 
+					<p class="error__name"> 
 						<b>Error:</b> The full name must have at least 3 letters and cannot contain symbols 
 					</p>
-					<p class="form__input-error"> 
+					<p class="error__email"> 
 						<b>Error:</b> The email must be in the format email@yourserviceprovider.com 
 					</p>
-					<p class="form__input-error"> 
-						<b>Error:</b> The password must contain at least 4 characters 
+					<p class="error__password"> 
+						<b>Error:</b> The password must contain at least 4 characters and at most 12 characters 
 					</p>
-					<p class="form__input-error">
+					<p class="error__repeat-password">
 						<b>Error:</b> Password is not the same 
+					</p>
+					<p class="error__missing-inputs">
+						<b>Error:</b> There are missing Inputs
 					</p>
 				</div>
 
@@ -73,7 +76,7 @@
 					</button>
 				</div>
 
-				<div class="form__message-form-sent">
+				<div class="form__message-sent">
 					<p>
 						Your form has been successfully sent !
 					</p>
