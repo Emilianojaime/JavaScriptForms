@@ -10,7 +10,7 @@
 			Login Form
 		</title>
 	</head>
-	<body>
+	<body onload="form_components_check()">
 		<main>
 			<form  class="form" id="form">	
 				
@@ -28,7 +28,7 @@
 					<input type="password" class="form__input" name="password" id="password" >
 				</div>
 
-				<a href="..//html/form-register.html"> 
+				<a href="..//html/form-register.html">
 					¿You are not register? Click Here
 				</a>
 
@@ -45,13 +45,19 @@
 				</div>
 
 				<div class="form__group form__group-btn-send">
-					<button type="submit" class="form__btn">
-						Login
+					<button type="submit" class="form__btn" id="login-btn">
+						Login 
 					</button>		
 				</div>
 				
 			</form>
+
+			<div class="page message">
+				<p> There are no Form founded</p>
+			</div>
+
 		</main>	
-	<script src="..//js/login.js"></script>    
+		
+		<script src="..//js/login.js"></script>    
 	</body>
 </html>
