@@ -18,6 +18,7 @@ const	submit = document.querySelector('#form #send-btn');// submit button
 const reset = document.querySelector('#form #reset-btn');// reset button
 const login_link = document.querySelector('#form a');    // Link to Login page
 const number_of_fields = 4;													  	 // amount of fields
+const div_error = document.querySelector('#div_for_errors'); // div to use for errors of elements missing
 
 /*-------------------------- Funciones para Validaciones de existencia del formulario -----------------------------*/
 
@@ -34,52 +35,84 @@ function form_components_check() {
 function formExist() {   // preguntar si formulario existe
 	if(form) {                                    
 		console.log('el formulario existe');
+		return true;
 	}else {
-		console.log('el formulario no existe');
+		var text_error_form = document.createTextNode('Form is Missing');
+     div_error.appendChild(text_error_form);
+		 div_error.classList.add('check-unsuccessful');	
+		 
 	}
 }
 
 function sendButtonExist() {   // preguntar si boton existe
 	if(submit) {                                    
 		console.log('el boton send existe');
+		return true;
 	}else {
-		 console.log('el boton send no existe');
+		 var text_error_submit = document.createTextNode('Send Buttom is Missing');
+     div_error.appendChild(text_error_submit);
+		 div_error.classList.add('check-unsuccessful');	
+		 return false;
 	}
 }
 
 function resetButtonExist() {   // preguntar si boton reset existe
 	if(reset) {                                    
 		console.log('el boton reset existe');
+		return true;
 	}else {
-		 console.log('el boton reset no existe');
+		 var text_error_reset = document.createTextNode('Reset Buttom is Missing');
+     div_error.appendChild(text_error_reset);
+		 div_error.classList.add('check-unsuccessful');		
+		 return false;
 	}
 }
 
 function link_to_login_page() {   // preguntar si link a la pagina de login existe
-	if(login_link === null) {   
-		console.log('el link no existe');
-	}else if(login_link.href == "file:///C:/Users/emi_g/Downloads/Main%20Folder/Radium/Week%209////////////////////////////html/form-login.html") {
-		 console.log('el link a la pag de login existe y dirige a la pagina correcta');
+	if(login_link.href == "file:///C:/Users/emi_g/Downloads/Main%20Folder/Radium/Week%209////////////////////////////html/form-login.html") {   
+		console.log('el link a la pag de login existe y dirige a la pagina correcta');
+		return true;
+	}else if(login_link.herf == null) {
+		 console.log('el link no existe');
+		 var text_error_link = document.createTextNode('Link to login Page is Missing');
+     div_error.appendChild(text_error_link);
+		 div_error.classList.add('check-unsuccessful');	
+		 return false;
 		}else {
 		console.log('el link existe pero no dirige a la pagina correcta');
+		var text_error_link = document.createTextNode('Link to login Page is not working properly');
+     div_error.appendChild(text_error_link);
+		 div_error.classList.add('check-unsuccessful');	
+		 return false;
 	}
 }
 
 function amount_of_fields() {   // preguntar si la cantidad de inputs es la correcta
 	if(inputs.length == number_of_fields) {
 		console.log('La cantidad de campos (inputs) es correcta');
+		return true;
 	}else {
-		 console.log('La cantidad de campos (inputs) es correcta es incorrecta');
+		 var text_error_amount_of_fields = document.createTextNode('Input Fields are Missing');
+     div_error.appendChild(text_error_amount_of_fields);
+		 div_error.classList.add('check-unsuccessful');	
+		 return false;
 	}
 }
 
 function button_text() {   // preguntar si el contenido de los botones es el correcto
 	if(submit.innerText == "Send" && reset.innerText == "Reset Fields" ) {
-		console.log('El contenido del texto de los botones es el correcto');	
+		console.log('El contenido del texto de los botones es el correcto');
+		return true;	
 	}else if(submit.innerText !== "Send") {
-		 console.log('El contenido del texto del Boton de enviar es incorrecto');
+		 var text_error_send_content = document.createTextNode('Content of "Send" button is incorrect');
+     div_error.appendChild(text_error_send_content);
+		 div_error.classList.add('check-unsuccessful');
+		 return false;
 	}else {
-		 	console.log('El contenido del boton reset es incorrecto');
+			 var text_error_reset_content = document.createTextNode('Content of "Reset" button is incorrect');
+     	 div_error.appendChild(text_error_reset_content);
+		   div_error.classList.add('check-unsuccessful');
+		   return false;
 	}
 }
 
@@ -87,6 +120,10 @@ function labels_and_fields() {   // preguntar si las labels tienen campos asocia
 	for(var i = 0; i < (number_of_fields); i++) {
 		if(labels[i].control === null) {
 			console.log('La etiqueta', i,'no tiene un campo asociado (Error)');
+			var text_error_labels = document.createTextNode('The tag', i,'is missing from the form');
+      div_error.appendChild(text_error_labels);
+		  div_error.classList.add('check-unsuccessful');
+		  return false
 		}
 	}
 }

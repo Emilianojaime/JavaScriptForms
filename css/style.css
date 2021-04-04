@@ -71,7 +71,16 @@ main {
 }
 
 .form__message {
-	height: 45px;
+	height: 100%;
+	line-height: 45px;
+	background: #F66060;
+	padding: 0 15px;
+	border-radius: 3px;
+	display: none;
+}
+
+.form__message__bottom {
+	height: 10%;
 	line-height: 45px;
 	background: #F66060;
 	padding: 0 15px;
@@ -147,7 +156,16 @@ main {
 	grid-column: span 2;
 	text-align: center;
 	font-size: 14px;
-	color: #910202;
+	color: #000000;
+}
+
+.check-unsuccessful_2 {
+	margin: 5px;
+	color: white;
+}
+
+#div_for_errors {
+	margin: 5px;
 }
 
 /* ----- -----  Mediaqueries ----- ----- */
