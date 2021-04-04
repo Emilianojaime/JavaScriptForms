@@ -149,6 +149,7 @@ main {
 	text-align: center;
 	font-size: 14px;
 	color: #0b6100;
+	background: rgb(172, 134, 243)
 }
 
 .check-unsuccessful {
@@ -157,11 +158,6 @@ main {
 	text-align: center;
 	font-size: 14px;
 	color: #000000;
-}
-
-.check-unsuccessful_2 {
-	margin: 5px;
-	color: white;
 }
 
 #div_for_errors {

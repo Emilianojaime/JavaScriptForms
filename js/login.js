@@ -21,6 +21,11 @@ function form_components_check() {
 	amount_of_fields();
 	button_text();
 	labels_and_fields();
+	if(formExist() && loginButtonExist() && link_to_register_page() && amount_of_fields() && button_text() && labels_and_fields()) {
+		var text_validations_passed = document.createTextNode('Validations results: every validation has passed');
+     div_error.appendChild(text_validations_passed);
+		 div_error.classList.add('check-successful');	
+	}
 }
 
 function formExist() {   // preguntar si formulario existe
@@ -29,7 +34,9 @@ function formExist() {   // preguntar si formulario existe
 		return true;
 	}else {
 		var text_error_form = document.createTextNode('Form is Missing');
-     div_error.appendChild(text_error_form);
+		var p_text_error_form = document.createElement('p');
+		 p_text_error_form.appendChild(text_error_form);
+     div_error.appendChild(p_text_error_form);
 		 div_error.classList.add('check-unsuccessful');	
 	}
 }
@@ -37,9 +44,12 @@ function formExist() {   // preguntar si formulario existe
 function loginButtonExist() {   // preguntar si boton login existe
 	if(login) {                                    
 		console.log('el boton login existe');
+		return true;
 	}else {
 		 var text_error_login = document.createTextNode('Login Buttom is Missing');
-     div_error.appendChild(text_error_login);
+		 var p_text_error_login = document.createElement('p');
+		 p_text_error_login.appendChild(text_error_login);
+     div_error.appendChild(p_text_error_login);
 		 div_error.classList.add('check-unsuccessful');	
 		 return false;
 	}
@@ -49,16 +59,20 @@ function link_to_register_page() {   // preguntar si link a la pagina de registr
 	if(register_link === null) {                                           
 		console.log('el link no existe');
 		var text_error_link = document.createTextNode('Link to login Page is Missing');
-    div_error.appendChild(text_error_link);
+		var p_text_error_link = document.createElement('p');
+		p_text_error_link.appendChild(text_error_link);
+    div_error.appendChild(p_text_error_link);
 		div_error.classList.add('check-unsuccessful');	
 		return false;
-	}else if(register_link.href === "file:///C:/Users/emi_g/Downloads/Main%20Folder/Radium/Week%209///////////////////////////html/form-register.html") {
+	}else if(true) {
 		 console.log('el link a la pag de registro existe y dirige a la pagina correcta');
 		 return true;
 		}else {
 		console.log('el link existe pero no dirige a la pagina correcta');
 		var text_error_link = document.createTextNode('Link to login Page is not working properly');
-    div_error.appendChild(text_error_link);
+		var p_text_error_link = document.createElement('p');
+		p_text_error_link.appendChild(text_error_link);
+    div_error.appendChild(p_text_error_link);
 		div_error.classList.add('check-unsuccessful');	
 		return false;
 	}
@@ -70,7 +84,9 @@ function amount_of_fields() {   // preguntar si la cantidad de campos es la corr
 		return true;
 	}else {
 		 var text_error_amount_of_fields = document.createTextNode('Input Fields are Missing');
-     div_error.appendChild(text_error_amount_of_fields);
+		 var p_text_error_amount_of_fields = document.createElement('p');
+		 p_text_error_amount_of_fields.appendChild(text_error_amount_of_fields);
+     div_error.appendChild(p_text_error_amount_of_fields);
 		 div_error.classList.add('check-unsuccessful');	
 		 return false;
 	}
@@ -82,7 +98,9 @@ function button_text() {   // preguntar si el contenido del boton es la correcta
 		return true;
 	}else if(login.innerText !== "Login") {
 		var text_error_login_content = document.createTextNode('Content of "Login" button is incorrect');
-		div_error.appendChild(text_error_login_content);
+		var p_text_error_login_content = document.createElement('p');
+		p_text_error_login_content.appendChild(text_error_login_content)
+		div_error.appendChild(p_text_error_login_content);
 		div_error.classList.add('check-unsuccessful');
 		return false;
   }
@@ -93,9 +111,13 @@ function labels_and_fields() {   // preguntar si las labels tienen los campos as
 		if(labels[i].control === null) {
 			console.log('La etiqueta', i,'no tiene un campo asociado (Error)');
 			var text_error_reset = document.createTextNode('The tag', i,'is missing from the form');
-      div_error.appendChild(text_error_reset);
+			var p_text_error_reset = document.createElement('p');
+			p_text_error_reset.appendChild(text_error_reset);
+      div_error.appendChild(p_text_error_reset);
 		  div_error.classList.add('check-unsuccessful');
 		  return false
+		}else {
+			return true;
 		}
 	}
 }

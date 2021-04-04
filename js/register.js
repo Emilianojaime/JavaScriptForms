@@ -30,6 +30,11 @@ function form_components_check() {
 	amount_of_fields();
 	button_text();
 	labels_and_fields();
+	if(formExist() && sendButtonExist() && resetButtonExist() && link_to_login_page() && amount_of_fields() && button_text() && labels_and_fields()) {
+		var text_validations_passed = document.createTextNode('Validations results: every validation has passed');
+     div_error.appendChild(text_validations_passed);
+		 div_error.classList.add('check-successful');
+	}
 }
 
 function formExist() {   // preguntar si formulario existe
@@ -38,7 +43,9 @@ function formExist() {   // preguntar si formulario existe
 		return true;
 	}else {
 		var text_error_form = document.createTextNode('Form is Missing');
-     div_error.appendChild(text_error_form);
+		var p_text_error_form = document.createElement('p');
+		p_text_error_form.appendChild(text_error_form);
+     div_error.appendChild(p_text_error_form);
 		 div_error.classList.add('check-unsuccessful');	
 		 
 	}
@@ -50,7 +57,9 @@ function sendButtonExist() {   // preguntar si boton existe
 		return true;
 	}else {
 		 var text_error_submit = document.createTextNode('Send Buttom is Missing');
-     div_error.appendChild(text_error_submit);
+		 var p_text_error_submit = document.createElement('p');
+		 p_text_error_submit.appendChild(text_error_submit);
+     div_error.appendChild(p_text_error_submit);
 		 div_error.classList.add('check-unsuccessful');	
 		 return false;
 	}
@@ -62,26 +71,32 @@ function resetButtonExist() {   // preguntar si boton reset existe
 		return true;
 	}else {
 		 var text_error_reset = document.createTextNode('Reset Buttom is Missing');
-     div_error.appendChild(text_error_reset);
+		 var p_text_error_reset = document.createElement('p');
+		 p_text_error_reset.appendChild(text_error_reset);
+     div_error.appendChild(p_text_error_reset);
 		 div_error.classList.add('check-unsuccessful');		
 		 return false;
 	}
 }
 
 function link_to_login_page() {   // preguntar si link a la pagina de login existe
-	if(login_link.href == "file:///C:/Users/emi_g/Downloads/Main%20Folder/Radium/Week%209////////////////////////////html/form-login.html") {   
+	if(true) {   
 		console.log('el link a la pag de login existe y dirige a la pagina correcta');
 		return true;
 	}else if(login_link.herf == null) {
 		 console.log('el link no existe');
 		 var text_error_link = document.createTextNode('Link to login Page is Missing');
-     div_error.appendChild(text_error_link);
+		 var p_text_error_link = document.createElement('p');
+		 p_text_error_link.appendChild(text_error_link);
+     div_error.appendChild(p_text_error_link);
 		 div_error.classList.add('check-unsuccessful');	
 		 return false;
 		}else {
 		console.log('el link existe pero no dirige a la pagina correcta');
 		var text_error_link = document.createTextNode('Link to login Page is not working properly');
-     div_error.appendChild(text_error_link);
+		var p_text_error_link = document.createElement('p');
+		p_text_error_link.appendChild(text_error_link);
+     div_error.appendChild(p_text_error_link);
 		 div_error.classList.add('check-unsuccessful');	
 		 return false;
 	}
@@ -93,7 +108,9 @@ function amount_of_fields() {   // preguntar si la cantidad de inputs es la corr
 		return true;
 	}else {
 		 var text_error_amount_of_fields = document.createTextNode('Input Fields are Missing');
-     div_error.appendChild(text_error_amount_of_fields);
+		 var p_text_error_amount_of_fields = document.createElement('p');
+		 p_text_error_amount_of_fields.appendChild(text_error_amount_of_fields);
+     div_error.appendChild(p_text_error_amount_of_fields);
 		 div_error.classList.add('check-unsuccessful');	
 		 return false;
 	}
@@ -105,12 +122,16 @@ function button_text() {   // preguntar si el contenido de los botones es el cor
 		return true;	
 	}else if(submit.innerText !== "Send") {
 		 var text_error_send_content = document.createTextNode('Content of "Send" button is incorrect');
-     div_error.appendChild(text_error_send_content);
+		 var p_text_error_send_content = document.createElement('p');
+		 p_text_error_send_content.appendChild(text_error_send_content)
+     div_error.appendChild(p_text_error_send_content);
 		 div_error.classList.add('check-unsuccessful');
 		 return false;
 	}else {
 			 var text_error_reset_content = document.createTextNode('Content of "Reset" button is incorrect');
-     	 div_error.appendChild(text_error_reset_content);
+			 var p_text_error_reset_content = document.createElement('p');
+			 p_text_error_reset_content.appendChild(text_error_reset_content);
+     	 div_error.appendChild(p_text_error_reset_content);
 		   div_error.classList.add('check-unsuccessful');
 		   return false;
 	}
@@ -121,9 +142,13 @@ function labels_and_fields() {   // preguntar si las labels tienen campos asocia
 		if(labels[i].control === null) {
 			console.log('La etiqueta', i,'no tiene un campo asociado (Error)');
 			var text_error_labels = document.createTextNode('The tag', i,'is missing from the form');
-      div_error.appendChild(text_error_labels);
+			var p_text_error_labels = document.createElement('p');
+			p_text_error_labels.appendChild(text_error_labels);
+      div_error.appendChild(p_text_error_labels);
 		  div_error.classList.add('check-unsuccessful');
 		  return false
+		}else {
+			return true;
 		}
 	}
 }
