@@ -12,43 +12,34 @@
 	</head>
 	<body onload="form_components_check()">
 		<main>
-			
 			<form class="form" id="form">	
-			
 				<div class="form__group" id="group__fullname">
 					<label for="fullname" class="form__label">
 						Full name
 					</label>
 					<input type="text" class="form__input" name="fullname" id="fullname" placeholder="Insert Your Full Name Here"> 
 				</div>
-
 				<div class="form__group" id="group__email">
 					<label for="email" class="form__label">
 						E-Mail
 					</label>
 					<input type="email" class="form__input" name="email" id="email" placeholder="Insert Your E-mail Here"> 
 				</div>
-
 				<div class="for__group" id="group__password">
 					<label for="password" class="form__label">
 						Password
 					</label>
 					<input type="password" class="form__input" name="password" id="password" >
 				</div>
-
 				<div class="for__group" id="group__repeat-password">
 					<label for="repeat-password" class="form__label">
 						Repeat Password
 					</label>
 					<input type="password" class="form__input" name="repeat-password" id="repeat-password"> 
 				</div>
-
 				<a href="..//html/form-login.html">
 					¿Already Register? Click Here
 				</a>
-
-				
-
 				<div class="form__message" id="form__message">
 					<p class="error__name"> 
 						<b>Error:</b> The full name must have at least 3 letters and cannot contain symbols 
@@ -66,34 +57,25 @@
 						<b>Error:</b> There are missing Inputs
 					</p>
 				</div>
-				
 				<div class="form__group form__group-btn-send">
 					<button type="submit" class="form__btn" id="send-btn">
 						Send
 					</button>		
 				</div>
-				
 				<div class="form__group form__group-btn-reset-fields">
 					<button type="reset" class="form__btn" id="reset-btn">
 						Reset Fields
 					</button>
 				</div>
-				
 				<div class="form__message-sent">
 					<p>
 						Your form has been successfully sent !
 					</p>
 				</div>
-
-				
-
 			</form>
-
 			<div class="form__message" id="div_for_errors">
-			</div>
-		    
-		</main>	
-			
+			</div>   
+		</main>		
 		<script src="..//js/register.js"></script>
 	</body>
 </html>

@@ -1,33 +1,27 @@
 * {
 	box-sizing: border-box;
 }
-
 body {
 	font-family: 'Roboto', sans-serif;
 	background: #9e7575;
 }
-
 main {
 	max-width: 800px;
 	width: 90%;
 	margin: auto;
 	padding: 40px;
 }
-
 .form {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
 }
-
 .form__label {
 	display: block;
 	font-weight: 700;
 	padding: 10px;
 	cursor: pointer;
 }
-
-
 .form__input {
 	width: 100%;
 	background: #fff;
@@ -38,13 +32,11 @@ main {
 	padding: 0 40px 0 10px;
 	transition: .3s ease all;
 }
-
 .form__input:focus {
 	border: 3px solid #0075FF;
 	outline: none;
 	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
 }
-
 .error__name,
 .error__email,
 .error__password,
@@ -54,7 +46,6 @@ main {
 	margin-bottom: 0;
 	display: none;
 }
-
 .error__name-active,
 .error__email-active,
 .error__password-active,
@@ -62,14 +53,12 @@ main {
 .error__missing-inputs-active {
 	display: block;
 }
-
 .form__message,
 .form a, 
 .form__group-btn-send,
 .form__group-btn-reset-fields {
 	grid-column: span 2;
 }
-
 .form__message {
 	height: 100%;
 	line-height: 45px;
@@ -78,7 +67,6 @@ main {
 	border-radius: 3px;
 	display: none;
 }
-
 .form__message__bottom {
 	height: 10%;
 	line-height: 45px;
@@ -87,39 +75,33 @@ main {
 	border-radius: 3px;
 	display: none;
 }
-
 .form__message-active {
 	display: block;
 }
-
 .form__message p {
 	margin: 0;
 }
-
 .form__group-btn-reset-fields,
 .form__group-btn-send {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-
 .form__btn {
 	height: 45px;
 	line-height: 45px;
 	width: 30%;
 	background: #000;
-	color: #fff;
 	font-weight: bold;
 	border: none;
 	border-radius: 3px;
 	cursor: pointer;
 	transition: .1s ease all;
+	color: #fff;
 }
-
 .form__btn:hover {
 	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
 }
-
 .form__message-sent {
 	display: none;
 	grid-column: span 2;
@@ -128,21 +110,16 @@ main {
 	font-weight: bold;
 	color: #0b6100;
 }
-
 .form__message-sent-active {
 	display: block;
 }
-
 /* ----- -----  Estilos para Validacion ----- ----- */
 .form__group-error .form__label {
 	color: #bb2929;
 }
-
-
 .form__group-error .form__input {
 	border: 3px solid #bb2929;
 }
-
 .check-successful {
 	display: block;
 	grid-column: span 2;
@@ -151,7 +128,6 @@ main {
 	color: #0b6100;
 	background: rgb(172, 134, 243)
 }
-
 .check-unsuccessful {
 	display: block;
 	grid-column: span 2;
@@ -159,22 +135,18 @@ main {
 	font-size: 14px;
 	color: #000000;
 }
-
 #div_for_errors {
 	margin: 5px;
 }
-
 /* ----- -----  Mediaqueries ----- ----- */
 @media screen and (max-width: 800px) {
 	.form {
 		grid-template-columns: 1fr;
 	}
-
 	.form__message,
 	.form__group-btn-send {
 		grid-column: 1;
 	}
-
 	.form__btn {
 		width: 100%;
 	}

@@ -3,158 +3,133 @@ const expressions = {
 	password: /^.{4,12}$/, // 4 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 }
-
 const fields = {
 	fullname: false,
 	email: false,
 	password: false,
 	repeatPassword: false
 }
-
 const form = document.getElementById('form');            // Formulario 
 const inputs = document.querySelectorAll('#form input'); // inputs
 const labels = document.querySelectorAll('#form label'); // labels	
-const	submit = document.querySelector('#form #send-btn');// submit button
+const submit = document.querySelector('#form #send-btn');// submit button
 const reset = document.querySelector('#form #reset-btn');// reset button
 const login_link = document.querySelector('#form a');    // Link to Login page
 const number_of_fields = 4;													  	 // amount of fields
 const div_error = document.querySelector('#div_for_errors'); // div to use for errors of elements missing
-
 /*-------------------------- Funciones para Validaciones de existencia del formulario -----------------------------*/
-
 function form_components_check() {
-	formExist();
-	sendButtonExist();
-	resetButtonExist();
-	link_to_login_page();
-	amount_of_fields();
-	button_text();
+	a = formExist();
+	b = sendButtonExist();
+	c = resetButtonExist();
+	d = link_to_login_page();
+	e = amount_of_fields();
+	f = button_text();
 	labels_and_fields();
-	if(formExist() && sendButtonExist() && resetButtonExist() && link_to_login_page() && amount_of_fields() && button_text() && labels_and_fields()) {
+	if(a && b && d && c && e && f) {
 		var text_validations_passed = document.createTextNode('Validations results: every validation has passed');
-     div_error.appendChild(text_validations_passed);
-		 div_error.classList.add('check-successful');
+    div_error.appendChild(text_validations_passed);
+		div_error.classList.add('check-successful');
 	}
 }
-
 function formExist() {   // preguntar si formulario existe
 	if(form) {                                    
 		console.log('el formulario existe');
 		return true;
 	}else {
-		var text_error_form = document.createTextNode('Form is Missing');
-		var p_text_error_form = document.createElement('p');
-		p_text_error_form.appendChild(text_error_form);
-     div_error.appendChild(p_text_error_form);
-		 div_error.classList.add('check-unsuccessful');	
-		 
+			var text_error_form = document.createTextNode('Form is Missing');
+			var p_text_error_form = document.createElement('p');
+			p_text_error_form.appendChild(text_error_form);
+			div_error.appendChild(p_text_error_form);
+			div_error.classList.add('check-unsuccessful');	
 	}
 }
-
 function sendButtonExist() {   // preguntar si boton existe
 	if(submit) {                                    
 		console.log('el boton send existe');
 		return true;
 	}else {
-		 var text_error_submit = document.createTextNode('Send Buttom is Missing');
-		 var p_text_error_submit = document.createElement('p');
-		 p_text_error_submit.appendChild(text_error_submit);
-     div_error.appendChild(p_text_error_submit);
-		 div_error.classList.add('check-unsuccessful');	
-		 return false;
+			var text_error_submit = document.createTextNode('Send Buttom is Missing');
+			var p_text_error_submit = document.createElement('p');
+			p_text_error_submit.appendChild(text_error_submit);
+			div_error.appendChild(p_text_error_submit);
+			div_error.classList.add('check-unsuccessful');	
+			return false;
 	}
 }
-
 function resetButtonExist() {   // preguntar si boton reset existe
 	if(reset) {                                    
 		console.log('el boton reset existe');
 		return true;
 	}else {
-		 var text_error_reset = document.createTextNode('Reset Buttom is Missing');
-		 var p_text_error_reset = document.createElement('p');
-		 p_text_error_reset.appendChild(text_error_reset);
-     div_error.appendChild(p_text_error_reset);
-		 div_error.classList.add('check-unsuccessful');		
-		 return false;
+			var text_error_reset = document.createTextNode('Reset Buttom is Missing');
+			var p_text_error_reset = document.createElement('p');
+			p_text_error_reset.appendChild(text_error_reset);
+			div_error.appendChild(p_text_error_reset);
+			div_error.classList.add('check-unsuccessful');		
+			return false;
 	}
 }
-
 function link_to_login_page() {   // preguntar si link a la pagina de login existe
-	if(true) {   
-		console.log('el link a la pag de login existe y dirige a la pagina correcta');
-		return true;
-	}else if(login_link.herf == null) {
-		 console.log('el link no existe');
-		 var text_error_link = document.createTextNode('Link to login Page is Missing');
-		 var p_text_error_link = document.createElement('p');
-		 p_text_error_link.appendChild(text_error_link);
-     div_error.appendChild(p_text_error_link);
-		 div_error.classList.add('check-unsuccessful');	
-		 return false;
-		}else {
-		console.log('el link existe pero no dirige a la pagina correcta');
-		var text_error_link = document.createTextNode('Link to login Page is not working properly');
+	if(login_link === null) {  
+		console.log('El link no existe');
+		var text_error_link = document.createTextNode('Link to login Page is Missing');
 		var p_text_error_link = document.createElement('p');
 		p_text_error_link.appendChild(text_error_link);
-     div_error.appendChild(p_text_error_link);
-		 div_error.classList.add('check-unsuccessful');	
-		 return false;
-	}
-}
-
+    div_error.appendChild(p_text_error_link);
+		div_error.classList.add('check-unsuccessful');	
+		return false; 
+	}else {
+			console.log('El link existe');
+			return true;
+	} 
+}  
 function amount_of_fields() {   // preguntar si la cantidad de inputs es la correcta
 	if(inputs.length == number_of_fields) {
 		console.log('La cantidad de campos (inputs) es correcta');
 		return true;
 	}else {
-		 var text_error_amount_of_fields = document.createTextNode('Input Fields are Missing');
-		 var p_text_error_amount_of_fields = document.createElement('p');
-		 p_text_error_amount_of_fields.appendChild(text_error_amount_of_fields);
-     div_error.appendChild(p_text_error_amount_of_fields);
-		 div_error.classList.add('check-unsuccessful');	
-		 return false;
+			var text_error_amount_of_fields = document.createTextNode('Input Fields are Missing');
+			var p_text_error_amount_of_fields = document.createElement('p');
+			p_text_error_amount_of_fields.appendChild(text_error_amount_of_fields);
+			div_error.appendChild(p_text_error_amount_of_fields);
+			div_error.classList.add('check-unsuccessful');	
+			return false;
 	}
 }
-
 function button_text() {   // preguntar si el contenido de los botones es el correcto
 	if(submit.innerText == "Send" && reset.innerText == "Reset Fields" ) {
 		console.log('El contenido del texto de los botones es el correcto');
 		return true;	
 	}else if(submit.innerText !== "Send") {
-		 var text_error_send_content = document.createTextNode('Content of "Send" button is incorrect');
-		 var p_text_error_send_content = document.createElement('p');
-		 p_text_error_send_content.appendChild(text_error_send_content)
-     div_error.appendChild(p_text_error_send_content);
-		 div_error.classList.add('check-unsuccessful');
-		 return false;
+			var text_error_send_content = document.createTextNode('Content of "Send" button is incorrect');
+			var p_text_error_send_content = document.createElement('p');
+			p_text_error_send_content.appendChild(text_error_send_content)
+			div_error.appendChild(p_text_error_send_content);
+			div_error.classList.add('check-unsuccessful');
+			return false;
 	}else {
-			 var text_error_reset_content = document.createTextNode('Content of "Reset" button is incorrect');
-			 var p_text_error_reset_content = document.createElement('p');
-			 p_text_error_reset_content.appendChild(text_error_reset_content);
-     	 div_error.appendChild(p_text_error_reset_content);
-		   div_error.classList.add('check-unsuccessful');
-		   return false;
+				var text_error_reset_content = document.createTextNode('Content of "Reset" button is incorrect');
+				var p_text_error_reset_content = document.createElement('p');
+				p_text_error_reset_content.appendChild(text_error_reset_content);
+				div_error.appendChild(p_text_error_reset_content);
+				div_error.classList.add('check-unsuccessful');
+				return false;
 	}
 }
-
 function labels_and_fields() {   // preguntar si las labels tienen campos asociados                                   
 	for(var i = 0; i < (number_of_fields); i++) {
-		if(labels[i].control === null) {
+		if(labels[i].control == null) {
 			console.log('La etiqueta', i,'no tiene un campo asociado (Error)');
-			var text_error_labels = document.createTextNode('The tag', i,'is missing from the form');
+			var text_error_labels = document.createTextNode('There are a tag whit no input associated');
 			var p_text_error_labels = document.createElement('p');
 			p_text_error_labels.appendChild(text_error_labels);
       div_error.appendChild(p_text_error_labels);
 		  div_error.classList.add('check-unsuccessful');
-		  return false
-		}else {
-			return true;
 		}
 	}
 }
-
 /*------------------------------ Funciones para Validaciones dentro del formulario ---------------------------------*/
-
 const validationForm = (e) => {
 	switch (e.target.name) {
 		case 'fullname':
@@ -189,7 +164,6 @@ const validationForm = (e) => {
 				document.querySelector('form .form__message').classList.remove('form__message-active');
 				document.querySelector('form .form__message .error__password').classList.remove('error__password-active');
 				fields['password'] = true;
-				
 			} else {
 					document.getElementById('group__password').classList.add('form__group-error');
 					document.querySelector('form .form__message').classList.add('form__message-active');
@@ -200,48 +174,40 @@ const validationForm = (e) => {
 		case 'repeat-password':
 			const inputpasssword1 = document.getElementById('password');
 			const inputpasssword2 = document.getElementById('repeat-password');
-
 			if(inputpasssword1.value == inputpasssword2.value){
 				document.getElementById('group__repeat-password').classList.remove('form__group-error');
 				document.querySelector('form .form__message').classList.remove('form__message-active');
 				document.querySelector('form .form__message .error__repeat-password').classList.remove('error__repeat-password-active');
-				fields['repeatPassword'] = true;
-				
+				fields['repeatPassword'] = true;	
 			} else {
 					document.getElementById('group__repeat-password').classList.add('form__group-error');
 					document.querySelector('form .form__message').classList.add('form__message-active');
 					document.querySelector('form .form__message .error__repeat-password').classList.add('error__repeat-password-active');
-					fields['repeatPassword'] = false;
-					
+					fields['repeatPassword'] = false;		
 			}	
 		break;
 	}
- 
 }
-
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validationForm);
 	input.addEventListener('blur', validationForm);
 });
-
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 		if (fields.fullname && fields.email && fields.password && fields.repeatPassword) {
 			form.reset();
-
 			document.querySelector('form .form__message-sent').classList.add('form__message-sent-active');
 			setTimeout(() => {
-				document.querySelector('form .form__message-sent').classList.remove('form__message-sent-active');
+			document.querySelector('form .form__message-sent').classList.remove('form__message-sent-active');
 			}, 6000);
 		} else {
-			document.querySelector('form .form__message').classList.add('form__message-active');
-			document.querySelector('form .form__message .error__missing-inputs').classList.add('error__missing-inputs-active')
-			setTimeout(() => {
-				document.querySelector('form .form__message').classList.remove('form__message-active');
-				document.querySelector('form .form__message .error__missing-inputs').classList.remove('error__missing-inputs-active');
+				document.querySelector('form .form__message').classList.add('form__message-active');
+				document.querySelector('form .form__message .error__missing-inputs').classList.add('error__missing-inputs-active')
+				setTimeout(() => {
+					document.querySelector('form .form__message').classList.remove('form__message-active');
+					document.querySelector('form .form__message .error__missing-inputs').classList.remove('error__missing-inputs-active');
 			}, 6000);
 		}
-
 });
 /*---------------------------------------------------------------------------------------------------------------------*/
 
