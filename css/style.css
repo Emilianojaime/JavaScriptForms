@@ -51,8 +51,16 @@ main {
 .error__password-active,
 .error__repeat-password-active,
 .error__missing-inputs-active {
+	margin: 5px;
 	display: block;
 }
+.error__name-active b,
+.error__email-active b,
+.error__password-active b,
+.error__repeat-password-active b {
+	color: #9c0000;
+}
+
 .form__message,
 .form a, 
 .form__group-btn-send,

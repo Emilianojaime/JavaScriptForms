@@ -1,6 +1,6 @@
 const expressions = {
-	name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
+	name: /^(?!.{52,})[a-zA-Z\.\'\-]{2,50}(?: [a-zA-Z\.\'\-]{4,50})+$/, // Nombre con al menos 2 partes donde la primera puede tener minimo de 2 caracteres maximo de 50 y las siguientes partes puede tener minumo de 4 caracteres y maximo de 50 (como minimo el nombre tendra 6 caracteres)
+	password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, // 8 digitos al menos 1 letra y 1 numero
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 }
 const fields = {
@@ -150,12 +150,12 @@ const validationForm = (e) => {
 			if(expressions.name.test(e.target.value)){
 				document.getElementById('group__fullname').classList.remove('form__group-error');
 				document.querySelector('form .form__message').classList.remove('form__message-active');
-				document.querySelector('form .form__message .error__name').classList.remove('error__name-active');
+				document.querySelector('form .error__name').classList.remove('error__name-active');
 				fields['fullname'] = true;
 			} else {
 					document.getElementById('group__fullname').classList.add('form__group-error');
 					document.querySelector('form .form__message').classList.add('form__message-active');
-					document.querySelector('form .form__message .error__name').classList.add('error__name-active');
+					document.querySelector('form .error__name').classList.add('error__name-active');
 					fields['fullname'] = false;
 			}	
 		break;
@@ -163,12 +163,12 @@ const validationForm = (e) => {
 			if(expressions.email.test(e.target.value)){
 				document.getElementById('group__email').classList.remove('form__group-error');
 				document.querySelector('form .form__message').classList.remove('form__message-active');
-				document.querySelector('form .form__message .error__email').classList.remove('error__email-active');
+				document.querySelector('form .error__email').classList.remove('error__email-active');
 				fields['email'] = true;
 			} else {
 					document.getElementById('group__email').classList.add('form__group-error');
 					document.querySelector('form .form__message').classList.add('form__message-active');
-					document.querySelector('form .form__message .error__email').classList.add('error__email-active');
+					document.querySelector('form .error__email').classList.add('error__email-active');
 					fields['email'] = false;
 			}	
 		break;
@@ -176,12 +176,12 @@ const validationForm = (e) => {
 			if(expressions.password.test(e.target.value)){
 				document.getElementById('group__password').classList.remove('form__group-error');
 				document.querySelector('form .form__message').classList.remove('form__message-active');
-				document.querySelector('form .form__message .error__password').classList.remove('error__password-active');
+				document.querySelector('form .error__password').classList.remove('error__password-active');
 				fields['password'] = true;
 			} else {
 					document.getElementById('group__password').classList.add('form__group-error');
 					document.querySelector('form .form__message').classList.add('form__message-active');
-					document.querySelector('form .form__message .error__password').classList.add('error__password-active');
+					document.querySelector('form .error__password').classList.add('error__password-active');
 					fields['password'] = false;
 			}	
 		break;
@@ -191,29 +191,88 @@ const validationForm = (e) => {
 			if(inputpasssword1.value == inputpasssword2.value){
 				document.getElementById('group__repeat-password').classList.remove('form__group-error');
 				document.querySelector('form .form__message').classList.remove('form__message-active');
-				document.querySelector('form .form__message .error__repeat-password').classList.remove('error__repeat-password-active');
+				document.querySelector('form .error__repeat-password').classList.remove('error__repeat-password-active');
 				fields['repeatPassword'] = true;	
 			} else {
 					document.getElementById('group__repeat-password').classList.add('form__group-error');
 					document.querySelector('form .form__message').classList.add('form__message-active');
-					document.querySelector('form .form__message .error__repeat-password').classList.add('error__repeat-password-active');
+					document.querySelector('form .error__repeat-password').classList.add('error__repeat-password-active');
 					fields['repeatPassword'] = false;		
 			}	
 		break;
 	}
 }
+const ClearFields = (e) => {
+	switch (e.target.name) {
+		case 'fullname':
+				document.getElementById('group__fullname').classList.remove('form__group-error');
+				document.querySelector('form .form__message').classList.remove('form__message-active');
+				document.querySelector('form .error__name').classList.remove('error__name-active');
+				fields['fullname'] = true;
+		break;
+		case 'email':
+				document.getElementById('group__email').classList.remove('form__group-error');
+				document.querySelector('form .form__message').classList.remove('form__message-active');
+				document.querySelector('form .error__email').classList.remove('error__email-active');
+				fields['email'] = true;
+		break;
+		case 'password':
+				document.getElementById('group__password').classList.remove('form__group-error');
+				document.querySelector('form .form__message').classList.remove('form__message-active');
+				document.querySelector('form .error__password').classList.remove('error__password-active');
+				fields['password'] = true;
+		break;
+		case 'repeat-password':
+				document.getElementById('group__repeat-password').classList.remove('form__group-error');
+				document.querySelector('form .form__message').classList.remove('form__message-active');
+				document.querySelector('form .error__repeat-password').classList.remove('error__repeat-password-active');
+				fields['repeatPassword'] = true;	
+		break;
+	}
+}
+/*------------------------------ Funciones para request -----------------------------------------------------------*/
+function get_email() {
+	fetch('https://jsonplaceholder.typicode.com/users?email='+inputs[1].value)
+	.then (rsp => rsp.json())
+	.then (data => {
+		console.log(data)
+	});
+}
+/*-------------------------------------------------------------------------------------------------------------------*/
 inputs.forEach((input) => {
-	input.addEventListener('keyup', validationForm);
 	input.addEventListener('blur', validationForm);
+});
+inputs.forEach((input) => {
+	input.addEventListener('focus', ClearFields);
 });
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 		if (fields.fullname && fields.email && fields.password && fields.repeatPassword) {
-			form.reset();
+			get_email();
 			document.querySelector('form .form__message-sent').classList.add('form__message-sent-active');
 			setTimeout(() => {
 			document.querySelector('form .form__message-sent').classList.remove('form__message-sent-active');
 			}, 6000);
+			var p_text_fullname_send= document.createElement('p');
+			var p_text_email_send= document.createElement('p');
+			var p_text_password_send= document.createElement('p');
+			var text_full_name_show = document.createTextNode('Full Name: ')
+			var text_email_show = document.createTextNode('Email: ')
+			var text_password_show = document.createTextNode('Password: ')
+			var text_fullname_send = document.createTextNode(inputs[0].value);
+			var text_email_send = document.createTextNode(inputs[1].value)
+			var text_password_send = document.createTextNode(inputs[2].value)
+			p_text_fullname_send.appendChild(text_full_name_show);
+			p_text_fullname_send.appendChild(text_fullname_send);
+			p_text_email_send.appendChild(text_email_show);
+			p_text_email_send.appendChild(text_email_send);
+			p_text_password_send.appendChild(text_password_show);
+			p_text_password_send.appendChild(text_password_send);
+			div_error.appendChild(p_text_fullname_send);
+			div_error.appendChild(p_text_email_send);
+			div_error.appendChild(p_text_password_send);
+			form.reset();
+
 		} else {
 				document.querySelector('form .form__message').classList.add('form__message-active');
 				document.querySelector('form .form__message .error__missing-inputs').classList.add('error__missing-inputs-active')
@@ -225,14 +284,14 @@ form.addEventListener('submit', (e) => {
 });
 form.addEventListener('reset', (e) => {
 	document.querySelector('form .form__message').classList.remove('form__message-active');
-    document.getElementById('group__fullname').classList.remove('form__group-error');
-	document.querySelector('form .form__message .error__name').classList.remove('error__name-active');
+  document.getElementById('group__fullname').classList.remove('form__group-error');
+	document.querySelector('form .error__name').classList.remove('error__name-active');
 	document.getElementById('group__email').classList.remove('form__group-error');
-	document.querySelector('form .form__message .error__email').classList.remove('error__email-active');
+	document.querySelector('form .error__email').classList.remove('error__email-active');
 	document.getElementById('group__password').classList.remove('form__group-error');
-	document.querySelector('form .form__message .error__password').classList.remove('error__password-active');
+	document.querySelector('form .error__password').classList.remove('error__password-active');
 	document.getElementById('group__repeat-password').classList.remove('form__group-error');
-	document.querySelector('form .form__message .error__repeat-password').classList.remove('error__repeat-password-active');
+	document.querySelector('form .error__repeat-password').classList.remove('error__repeat-password-active');
 });
 
 
