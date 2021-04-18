@@ -14,22 +14,22 @@ const inputs = document.querySelectorAll('#form input'); // inputs
 const labels = document.querySelectorAll('#form label'); // labels	
 const submit = document.querySelector('#form #send-btn');// submit button
 const reset = document.querySelector('#form #reset-btn');// reset button
-const login_link = document.querySelector('#form a');    // Link to Login page
-const number_of_fields = 4;							     // amount of fields
-const div_error = document.querySelector('#div_for_errors'); // div to use for errors of elements missing
+const loginLink = document.querySelector('#form a');    // Link to Login page
+const numberOfFields = 4;							     // amount of fields
+const divError = document.querySelector('#div_for_errors'); // div to use for errors of elements missing
 /*-------------------------- Funciones para Validaciones de existencia del formulario -----------------------------*/
-function form_components_check() {
-	valite_form_resut = formExist();
-	validate_send_result = sendButtonExist();
-	validate_reset_result = resetButtonExist();
-	validate_link_result = link_to_login_page();
-	validate_fields_result = amount_of_fields();
-	validate_button_text_result = button_text();
-	labels_and_fields();
-	if(valite_form_resut && validate_send_result && validate_reset_result && validate_link_result && validate_fields_result && validate_button_text_result) {
-		var text_validations_passed = document.createTextNode('Validations results: every validation has passed');
-    div_error.appendChild(text_validations_passed);
-		div_error.classList.add('check-successful');
+function formComponentsCheck() {
+	validateFormResults = formExist();
+	validateSendResult = sendButtonExist();
+	validateResetResult = resetButtonExist();
+	validateLinkResult = linkToLoginPage();
+	validateFieldsResult = amount_of_fields();
+	validateButtonTextResult = button_text();
+	labelsAndFields();
+	if(validateFormResults && validateSendResult && validateResetResult && validateLinkResult && validateFieldsResult && validateButtonTextResult) {
+		var textValidationsPassed = document.createTextNode('Validations results: every validation has passed');
+    divError.appendChild(textValidationsPassed);
+		divError.classList.add('check-successful');
 	}
 }
 function formExist() {   // preguntar si formulario existe
@@ -37,11 +37,11 @@ function formExist() {   // preguntar si formulario existe
 		console.log('Form exists');
 		return true;
 	}else {
-			var text_error_form = document.createTextNode('Form is Missing');
-			var p_text_error_form = document.createElement('p');
-			p_text_error_form.appendChild(text_error_form);
-			div_error.appendChild(p_text_error_form);
-			div_error.classList.add('check-unsuccessful');	
+			var textErrorForm = document.createTextNode('Form is Missing');
+			var pTextErrorForm = document.createElement('p');
+			pTextErrorForm.appendChild(textErrorForm);
+			divError.appendChild(pTextErrorForm);
+			divError.classList.add('check-unsuccessful');	
 	}
 }
 function sendButtonExist() {   // preguntar si boton existe
@@ -49,11 +49,11 @@ function sendButtonExist() {   // preguntar si boton existe
 		console.log('Send button exists');
 		return true;
 	}else {
-			var text_error_submit = document.createTextNode('Send button is Missing');
-			var p_text_error_submit = document.createElement('p');
-			p_text_error_submit.appendChild(text_error_submit);
-			div_error.appendChild(p_text_error_submit);
-			div_error.classList.add('check-unsuccessful');	
+			var textErrorSubmit = document.createTextNode('Send button is Missing');
+			var pTextErrorSubmit = document.createElement('p');
+			pTextErrorSubmit.appendChild(textErrorSubmit);
+			divError.appendChild(pTextErrorSubmit);
+			divError.classList.add('check-unsuccessful');	
 			return false;
 	}
 }
@@ -62,22 +62,22 @@ function resetButtonExist() {   // preguntar si boton reset existe
 		console.log('Reset Button exists');
 		return true;
 	}else {
-			var text_error_reset = document.createTextNode('Reset button is Missing');
-			var p_text_error_reset = document.createElement('p');
-			p_text_error_reset.appendChild(text_error_reset);
-			div_error.appendChild(p_text_error_reset);
-			div_error.classList.add('check-unsuccessful');		
+			var textErrorReset = document.createTextNode('Reset button is Missing');
+			var pTextErrorReset = document.createElement('p');
+			pTextErrorReset.appendChild(textErrorReset);
+			divError.appendChild(pTextErrorReset);
+			divError.classList.add('check-unsuccessful');		
 			return false;
 	}
 }
-function link_to_login_page() {   // preguntar si link a la pagina de login existe
-	if(login_link === null) {  
+function linkToLoginPage() {   // preguntar si link a la pagina de login existe
+	if(loginLink === null) {  
 		console.log('The link does not exist');
-		var text_error_link = document.createTextNode('Link to login Page is Missing');
-		var p_text_error_link = document.createElement('p');
-		p_text_error_link.appendChild(text_error_link);
-    div_error.appendChild(p_text_error_link);
-		div_error.classList.add('check-unsuccessful');	
+		var textErrorLink = document.createTextNode('Link to login Page is Missing');
+		var pTextErrorLink = document.createElement('p');
+		pTextErrorLink.appendChild(textErrorLink);
+    divError.appendChild(pTextErrorLink);
+		divError.classList.add('check-unsuccessful');	
 		return false; 
 	}else {
 			console.log('Link exist');
@@ -85,15 +85,15 @@ function link_to_login_page() {   // preguntar si link a la pagina de login exis
 	} 
 }  
 function amount_of_fields() {   // preguntar si la cantidad de inputs es la correcta
-	if(inputs.length == number_of_fields) {
+	if(inputs.length == numberOfFields) {
 		console.log('The number of fields (inputs) is correct');
 		return true;
 	}else {
-			var text_error_amount_of_fields = document.createTextNode('Input Fields are Missing');
-			var p_text_error_amount_of_fields = document.createElement('p');
-			p_text_error_amount_of_fields.appendChild(text_error_amount_of_fields);
-			div_error.appendChild(p_text_error_amount_of_fields);
-			div_error.classList.add('check-unsuccessful');	
+			var textErrorAmountOfFields = document.createTextNode('Input Fields are Missing');
+			var pTextErrorAmountOfFields = document.createElement('p');
+			pTextErrorAmountOfFields.appendChild(textErrorAmountOfFields);
+			divError.appendChild(pTextErrorAmountOfFields);
+			divError.classList.add('check-unsuccessful');	
 			return false;
 	}
 }
@@ -102,44 +102,44 @@ function button_text() {   // preguntar si el contenido de los botones es el cor
 		console.log('The content of the button "Send" and "Reset" is correct');
 		return true;	
 	}else if(submit.innerText !== "Send" && reset.innerText !== "Reset Fields") {
-			var text_error_send_content = document.createTextNode('Content of "Send" button is incorrect');
-			var p_text_error_send_content = document.createElement('p');
-			p_text_error_send_content.appendChild(text_error_send_content)
-			div_error.appendChild(p_text_error_send_content);
-			div_error.classList.add('check-unsuccessful');
-			var text_error_reset_content = document.createTextNode('Content of "Reset" button is incorrect');
-			var p_text_error_reset_content = document.createElement('p');
-			p_text_error_reset_content.appendChild(text_error_reset_content);
-			div_error.appendChild(p_text_error_reset_content);
-			div_error.classList.add('check-unsuccessful');
+			var textErrorSendContent = document.createTextNode('Content of "Send" button is incorrect');
+			var pTextErrorSendContent = document.createElement('p');
+			pTextErrorSendContent.appendChild(textErrorSendContent)
+			divError.appendChild(pTextErrorSendContent);
+			divError.classList.add('check-unsuccessful');
+			var textErrorResetContent = document.createTextNode('Content of "Reset" button is incorrect');
+			var pTextErrorResetContent = document.createElement('p');
+			pTextErrorResetContent.appendChild(textErrorResetContent);
+			divError.appendChild(pTextErrorResetContent);
+			divError.classList.add('check-unsuccessful');
 			return false;
 	}else if(submit.innerText !== "Send") {
-				var text_error_send_content = document.createTextNode('Content of "Send" button is incorrect');
-				var p_text_error_send_content = document.createElement('p');
-				p_text_error_send_content.appendChild(text_error_send_content)
-				div_error.appendChild(p_text_error_send_content);
-				div_error.classList.add('check-unsuccessful');
+				var textErrorSendContent = document.createTextNode('Content of "Send" button is incorrect');
+				var pTextErrorSendContent = document.createElement('p');
+				pTextErrorSendContent.appendChild(textErrorSendContent)
+				divError.appendChild(pTextErrorSendContent);
+				divError.classList.add('check-unsuccessful');
 				return false;
 	}else {
-					var text_error_reset_content = document.createTextNode('Content of "Reset" button is incorrect');
-					var p_text_error_reset_content = document.createElement('p');
-					p_text_error_reset_content.appendChild(text_error_reset_content);
-					div_error.appendChild(p_text_error_reset_content);
-					div_error.classList.add('check-unsuccessful');
+					var textErrorResetContent = document.createTextNode('Content of "Reset" button is incorrect');
+					var pTextErrorResetContent = document.createElement('p');
+					pTextErrorResetContent.appendChild(textErrorResetContent);
+					divError.appendChild(pTextErrorResetContent);
+					divError.classList.add('check-unsuccessful');
 					return false;
 					
 	}
 	
 }
-function labels_and_fields() {   // preguntar si las labels tienen campos asociados                                   
-	for(var i = 0; i < number_of_fields; i++) {
+function labelsAndFields() {   // preguntar si las labels tienen campos asociados                                   
+	for(var i = 0; i < numberOfFields; i++) {
 		if(labels[i].control == null) {
 			console.log('The tag', i,'does not have an associated field (Error)');
-			var text_error_labels = document.createTextNode('There are a Tag with no input associated');
-			var p_text_error_labels = document.createElement('p');
-			p_text_error_labels.appendChild(text_error_labels);
-      div_error.appendChild(p_text_error_labels);
-		  div_error.classList.add('check-unsuccessful');
+			var textErrorLabels = document.createTextNode('There are a Tag with no input associated');
+			var pTextErrorLabels = document.createElement('p');
+			pTextErrorLabels.appendChild(textErrorLabels);
+      divError.appendChild(pTextErrorLabels);
+		  divError.classList.add('check-unsuccessful');
 		}
 	}
 }
@@ -231,12 +231,22 @@ const ClearFields = (e) => {
 	}
 }
 /*------------------------------ Funciones para request -----------------------------------------------------------*/
-function get_email() {
-	fetch('https://jsonplaceholder.typicode.com/users?email='+inputs[1].value)
-	.then (rsp => rsp.json())
-	.then (data => {
-		console.log(data)
+async function handleRegister() {
+	let fullnameValue = document.getElementById('fullname').value;
+	let emailValue = document.getElementById('email').value
+	let passwordValue = document.getElementById('password').value
+	const res = await fetch('http://localhost:4000/api/register' , {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		mode: 'no-cors',
+		method: 'POST',
+		body: JSON.stringify({username: fullnameValue, email: emailValue, password: passwordValue})
 	});
+	// const data = await res.json();
+	console.log(fullnameValue);
+	console.log(emailValue);
+	console.log(passwordValue);
 }
 /*-------------------------------------------------------------------------------------------------------------------*/
 inputs.forEach((input) => {
@@ -248,29 +258,29 @@ inputs.forEach((input) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 		if (fields.fullname && fields.email && fields.password && fields.repeatPassword) {
-			get_email();
+			handleRegister();
 			document.querySelector('form .form__message-sent').classList.add('form__message-sent-active');
 			setTimeout(() => {
 			document.querySelector('form .form__message-sent').classList.remove('form__message-sent-active');
 			}, 6000);
-			var p_text_fullname_send= document.createElement('p');
-			var p_text_email_send= document.createElement('p');
-			var p_text_password_send= document.createElement('p');
-			var text_full_name_show = document.createTextNode('Full Name: ')
-			var text_email_show = document.createTextNode('Email: ')
-			var text_password_show = document.createTextNode('Password: ')
-			var text_fullname_send = document.createTextNode(inputs[0].value);
-			var text_email_send = document.createTextNode(inputs[1].value)
-			var text_password_send = document.createTextNode(inputs[2].value)
-			p_text_fullname_send.appendChild(text_full_name_show);
-			p_text_fullname_send.appendChild(text_fullname_send);
-			p_text_email_send.appendChild(text_email_show);
-			p_text_email_send.appendChild(text_email_send);
-			p_text_password_send.appendChild(text_password_show);
-			p_text_password_send.appendChild(text_password_send);
-			div_error.appendChild(p_text_fullname_send);
-			div_error.appendChild(p_text_email_send);
-			div_error.appendChild(p_text_password_send);
+			var pTextFullnameSend= document.createElement('p');
+			var pTextEmailSend= document.createElement('p');
+			var pTextPasswordSend= document.createElement('p');
+			var textFullnameShow = document.createTextNode('Full Name: ')
+			var textEmailShow = document.createTextNode('Email: ')
+			var textPasswordShow = document.createTextNode('Password: ')
+			var textFullnameSend = document.createTextNode(inputs[0].value);
+			var textEmailSend = document.createTextNode(inputs[1].value)
+			var textPasswordSend = document.createTextNode(inputs[2].value)
+			pTextFullnameSend.appendChild(textFullnameShow);
+			pTextFullnameSend.appendChild(textFullnameSend);
+			pTextEmailSend.appendChild(textEmailShow);
+			pTextEmailSend.appendChild(textEmailSend);
+			pTextPasswordSend.appendChild(textPasswordShow);
+			pTextPasswordSend.appendChild(textPasswordSend);
+			divError.appendChild(pTextFullnameSend);
+			divError.appendChild(pTextEmailSend);
+			divError.appendChild(pTextPasswordSend);
 			form.reset();
 
 		} else {

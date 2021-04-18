@@ -7,21 +7,21 @@ const form = document.getElementById('form');            // Formulario
 const inputs = document.querySelectorAll('#form input'); // inputs
 const labels = document.querySelectorAll('#form label'); // labels	
 const login = document.querySelector('#form #login-btn');// login button
-const register_link = document.querySelector('#form a'); // Link to form
-const number_of_fields = 2;															 // amount of fields
-const div_error = document.querySelector('#div_for_errors'); // div to use for errors of elements missing
+const registerLink = document.querySelector('#form a'); // Link to form
+const numberOfFields = 2;															 // amount of fields
+const divError = document.querySelector('#div_for_errors'); // div to use for errors of elements missing
 /*-------------------------- Funciones para Validaciones de existencia del formulario -----------------------------*/
-function form_components_check() {
-	valite_form_resut = formExist();
-	validate_login_result = loginButtonExist();
-	validate_link_result = link_to_register_page();
-	validate_fields_result = amount_of_fields();
-	validate_button_text_result = button_text();
-	labels_and_fields();
-	if(valite_form_resut && validate_login_result && validate_link_result && validate_fields_result && validate_button_text_result) {
-		var text_validations_passed = document.createTextNode('Validations results: every validation has passed');
-    div_error.appendChild(text_validations_passed);
-		div_error.classList.add('check-successful');	
+function formComponentsCheck() {
+	validateFormResult = formExist();
+	validateLoginResult = loginButtonExist();
+	validateLinkResult = linkToRegisterPage();
+	validateFieldsResult = amountOfFields();
+	validateButtonTextResult = buttonText();
+	labelsAndFields();
+	if(validateFormResult && validateLoginResult && validateLinkResult && validateFieldsResult && validateButtonTextResult) {
+		var textValidationsPassed = document.createTextNode('Validations results: every validation has passed');
+    divError.appendChild(textValidationsPassed);
+		divError.classList.add('check-successful');	
 	}
 }
 function formExist() {   // preguntar si formulario existe
@@ -29,11 +29,11 @@ function formExist() {   // preguntar si formulario existe
 		console.log('Form exists');
 		return true;
 	}else {
-			var text_error_form = document.createTextNode('Form is Missing');
-			var p_text_error_form = document.createElement('p');
-			p_text_error_form.appendChild(text_error_form);
-			div_error.appendChild(p_text_error_form);
-			div_error.classList.add('check-unsuccessful');	
+			var textErrorForm = document.createTextNode('Form is Missing');
+			var pTextErrorForm = document.createElement('p');
+			pTextErrorForm.appendChild(textErrorForm);
+			divError.appendChild(pTextErrorForm);
+			divError.classList.add('check-unsuccessful');	
 			return false;
 	}
 }
@@ -42,63 +42,63 @@ function loginButtonExist() {   // preguntar si boton login existe
 		console.log('Login Button exists');
 		return true;
 	}else {
-			var text_error_login = document.createTextNode('Login Button is Missing');
-			var p_text_error_login = document.createElement('p');
-			p_text_error_login.appendChild(text_error_login);
-			div_error.appendChild(p_text_error_login);
-			div_error.classList.add('check-unsuccessful');	
+			var textErrorLogin = document.createTextNode('Login Button is Missing');
+			var pTextErrorLogin = document.createElement('p');
+			pTextErrorLogin.appendChild(textErrorLogin);
+			divError.appendChild(pTextErrorLogin);
+			divError.classList.add('check-unsuccessful');	
 			return false;
 	}
 }
-function link_to_register_page() {   // preguntar si link a la pagina de registro existe 
-	if(register_link === null) {                                           
+function linkToRegisterPage() {   // preguntar si link a la pagina de registro existe 
+	if(registerLink === null) {                                           
 		console.log('The link does not exist');
-		var text_error_link = document.createTextNode('Link to login Page is Missing');
-		var p_text_error_link = document.createElement('p');
-		p_text_error_link.appendChild(text_error_link);
-    	div_error.appendChild(p_text_error_link);
-		div_error.classList.add('check-unsuccessful');	
+		var textErrorLink = document.createTextNode('Link to login Page is Missing');
+		var pTextErrorLink = document.createElement('p');
+		pTextErrorLink.appendChild(textErrorLink);
+    	divError.appendChild(pTextErrorLink);
+		divError.classList.add('check-unsuccessful');	
 		return false;
 	}else {
 			console.log('Link exist');	
 			return true;
 	}
 } 
-function amount_of_fields() {   // preguntar si la cantidad de campos es la correcta
-	if(inputs.length == number_of_fields) {
+function amountOfFields() {   // preguntar si la cantidad de campos es la correcta
+	if(inputs.length == numberOfFields) {
 		console.log('The number of fields (inputs) is correct');
 		return true;
 	}else {
-			var text_error_amount_of_fields = document.createTextNode('Input Fields are Missing');
-			var p_text_error_amount_of_fields = document.createElement('p');
-			p_text_error_amount_of_fields.appendChild(text_error_amount_of_fields);
-			div_error.appendChild(p_text_error_amount_of_fields);
-			div_error.classList.add('check-unsuccessful');	
+			var textErrorAmountOfFields = document.createTextNode('Input Fields are Missing');
+			var pTextErrorAmountOfFields = document.createElement('p');
+			pTextErrorAmountOfFields.appendChild(textErrorAmountOfFields);
+			divError.appendChild(pTextErrorAmountOfFields);
+			divError.classList.add('check-unsuccessful');	
 			return false;
 	}
 }
-function button_text() {   // preguntar si el contenido del boton es la correcta
+function buttonText() {   // preguntar si el contenido del boton es la correcta
 	if(login.innerText == "Login") {
 		console.log('The content of the button "Login" is correct');	
 		return true;
 	}else if(login.innerText !== "Login") {
-			var text_error_login_content = document.createTextNode('Content of "Login" button is incorrect');
-			var p_text_error_login_content = document.createElement('p');
-			p_text_error_login_content.appendChild(text_error_login_content);
-			div_error.appendChild(p_text_error_login_content);
-			div_error.classList.add('check-unsuccessful');
+			var textErrorLoginContent = document.createTextNode('Content of "Login" button is incorrect');
+			var pTextErrorLoginContent = document.createElement('p');
+			pTextErrorLoginContent.appendChild(textErrorLoginContent);
+			divError.appendChild(pTextErrorLoginContent);
+			divError.classList.add('check-unsuccessful');
 			return false;
   }
 }
-function labels_and_fields() {   // preguntar si las labels tienen los campos asociados
-	for(var i = 0; i < number_of_fields; i++) {
+function labelsAndFields() {   // preguntar si las labels tienen los campos asociados
+	for(var i = 0; i < numberOfFields; i++) {
 		if(labels[i].control === null) {
 			console.log('The tag', i,'does not have an associated field (Error)');
-			var text_error_reset = document.createTextNode('There are a Tag with no input associated');
-			var p_text_error_reset = document.createElement('p');
-			p_text_error_reset.appendChild(text_error_reset);
-      div_error.appendChild(p_text_error_reset);
-		  div_error.classList.add('check-unsuccessful');
+			var textErrorReset = document.createTextNode('There are a Tag with no input associated');
+			var pTextErrorReset = document.createElement('p');
+			pTextErrorReset.appendChild(textErrorReset);
+      divError.appendChild(pTextErrorReset);
+		  divError.classList.add('check-unsuccessful');
 		}
 		
 	}
@@ -170,18 +170,18 @@ form.addEventListener('submit', (e) => {
 			}, 6000);
 		}else if ((document.getElementById('email').value !== '') && (document.getElementById('password').value !== '')) {
 				get_email();
-				var p_text_email_send= document.createElement('p');
-				var p_text_password_send= document.createElement('p');
-				var text_email_show = document.createTextNode('Email: ')
-				var text_password_show = document.createTextNode('Password: ')
-				var text_email_send = document.createTextNode(inputs[0].value)
-				var text_password_send = document.createTextNode(inputs[1].value)
-				p_text_email_send.appendChild(text_email_show);
-				p_text_email_send.appendChild(text_email_send);
-				p_text_password_send.appendChild(text_password_show);
-				p_text_password_send.appendChild(text_password_send);
-				div_error.appendChild(p_text_email_send);
-				div_error.appendChild(p_text_password_send);
+				var pTextEmailSend= document.createElement('p');
+				var pTextPasswordSend= document.createElement('p');
+				var textEmailShow = document.createTextNode('Email: ')
+				var textPasswordShow = document.createTextNode('Password: ')
+				var textEmailSend = document.createTextNode(inputs[0].value)
+				var textPasswordSend = document.createTextNode(inputs[1].value)
+				pTextEmailSend.appendChild(textEmailShow);
+				pTextEmailSend.appendChild(textEmailSend);
+				pTextPasswordSend.appendChild(textPasswordShow);
+				pTextPasswordSend.appendChild(textPasswordSend);
+				divError.appendChild(pTextEmailSend);
+				divError.appendChild(pTextPasswordSend);
 				form.reset();
 		}
 });
