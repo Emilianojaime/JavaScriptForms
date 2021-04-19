@@ -145,12 +145,21 @@ const ClearFields = (e) => {
 	}
 }
 /*------------------------------ Funciones para request -----------------------------------------------------------*/
-function get_email() {
-	fetch('https://jsonplaceholder.typicode.com/users?email='+inputs[1].value)
-	.then (rsp => rsp.json())
-	.then (data => {
-		console.log(data)
+async function handleLogin() {
+	let emailValue = document.getElementById('email').value
+	let passwordValue = document.getElementById('password').value
+
+	const res = await fetch('http://localhost:4000/api/login', {
+		method: 'PUT',
+		mode: 'cors',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({email: emailValue, password: passwordValue})
 	});
+
+	const data = await res.json();
+	console.log(data);
 }
 /*-------------------------------------------------------------------------------------------------------------------*/
 inputs.forEach((input) => { 
@@ -167,9 +176,11 @@ form.addEventListener('submit', (e) => {
 			setTimeout(() => {
 				document.querySelector('form .form__message').classList.remove('form__message-active');
 				document.querySelector('form .form__message .error__missing-inputs').classList.remove('error__missing-inputs-active')
+				divError.removeChild(pTextEmailSend);
+				divError.removeChild(pTextPasswordSend);
 			}, 6000);
 		}else if ((document.getElementById('email').value !== '') && (document.getElementById('password').value !== '')) {
-				get_email();
+				handleLogin();
 				var pTextEmailSend= document.createElement('p');
 				var pTextPasswordSend= document.createElement('p');
 				var textEmailShow = document.createTextNode('Email: ')
@@ -183,6 +194,10 @@ form.addEventListener('submit', (e) => {
 				divError.appendChild(pTextEmailSend);
 				divError.appendChild(pTextPasswordSend);
 				form.reset();
+				setTimeout(() => {
+					divError.removeChild(pTextEmailSend);
+					divError.removeChild(pTextPasswordSend);
+				}, 6000);
 		}
 });
 /*---------------------------------------------------------------------------------------------------------------------*/

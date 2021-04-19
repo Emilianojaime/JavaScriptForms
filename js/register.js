@@ -235,18 +235,30 @@ async function handleRegister() {
 	let fullnameValue = document.getElementById('fullname').value;
 	let emailValue = document.getElementById('email').value
 	let passwordValue = document.getElementById('password').value
-	const res = await fetch('http://localhost:4000/api/register' , {
+	/* const options = {
+		method: 'POST',
 		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({username: fullnameValue, email: emailValue, password: passwordValue})
+	} */
+
+	const res = await fetch('http://localhost:4000/api/register', {
+		method: 'POST',
+		mode: 'cors',
+		headers: {
+			'Accept': 'application/json',
 			'Content-Type': 'application/json',
 		},
-		mode: 'no-cors',
-		method: 'POST',
-		body: JSON.stringify({username: fullnameValue, email: emailValue, password: passwordValue})
+		body: JSON.stringify({
+			username: fullnameValue, 
+			email: emailValue, 
+			password: passwordValue})
 	});
-	// const data = await res.json();
-	console.log(fullnameValue);
-	console.log(emailValue);
-	console.log(passwordValue);
+
+	const data = await res.json();
+	console.log (data);
+	
 }
 /*-------------------------------------------------------------------------------------------------------------------*/
 inputs.forEach((input) => {
@@ -282,6 +294,11 @@ form.addEventListener('submit', (e) => {
 			divError.appendChild(pTextEmailSend);
 			divError.appendChild(pTextPasswordSend);
 			form.reset();
+			setTimeout(() => {
+				divError.removeChild(pTextFullnameSend);
+				divError.removeChild(pTextEmailSend);
+				divError.removeChild(pTextPasswordSend);
+			}, 6000);
 
 		} else {
 				document.querySelector('form .form__message').classList.add('form__message-active');
