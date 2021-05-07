@@ -1,0 +1,32 @@
+{
+  "name": "week14",
+  "version": "1.0.0",
+  "description": "This is the Week 9 Exercise.",
+  "main": "index.js",
+  "dependencies": {
+    "@wdio/cli": "^7.5.7",
+    "@wdio/sync": "^7.5.7",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@wdio/jasmine-framework": "^7.5.3",
+    "@wdio/local-runner": "^7.5.7",
+    "@wdio/spec-reporter": "^7.5.7",
+    "chromedriver": "^90.0.0",
+    "jasmine": "^3.7.0",
+    "wdio-chromedriver-service": "^7.0.0"
+  },
+  "scripts": {
+    "test": "npx wdio run ./wdio.conf.js --spec testingLogin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emilianojaime/JavaScriptForms.git"
+  },
+  "author": "Emiliano Jaime",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emilianojaime/JavaScriptForms/issues"
+  },
+  "homepage": "https://github.com/Emilianojaime/JavaScriptForms#readme"
+}
