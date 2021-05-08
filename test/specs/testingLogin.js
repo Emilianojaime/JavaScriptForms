@@ -1,8 +1,9 @@
+const { missingInputs } = require('../pageobjects/login.page');
 const LoginPage = require('../pageobjects/login.page');
 
 describe('Testing Selectors', () => {
 
-  it('Testing Register Selectors doing click', () => {
+  it('Testing Register Selectors, some error messages and Link doing click', () => {
     LoginPage.open();
     LoginPage.inputEmail.click();
     LoginPage.inputPassword.click();
@@ -10,7 +11,15 @@ describe('Testing Selectors', () => {
     LoginPage.registerLink.click();
     browser.pause(2000);
 
-    expect(browser).toHaveUrl('https://emilianojaime.github.io/JavaScriptForms/html/form-register.html')
+    expect(browser).toHaveUrlContaining('form-register.html');
     
+  })
+
+  it('Testing Blank Login', () => {
+    LoginPage.open();
+    LoginPage.btnSubmit.click();
+    browser.pause(2000);
+
+    expect(missingInputs).toBeDisplayed();
   })
 } )

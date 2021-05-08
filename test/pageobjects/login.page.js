@@ -6,8 +6,9 @@ class LoginPage extends Page {
   
     get inputEmail () { return $('#email') };
     get inputPassword () { return $('#password') };
-    get registerLink () { return $('registerLink')};
+    get registerLink () { return $('#registerLink')};
     get btnSubmit () { return $('button[type="submit"]') };
+    get missingInputs () { return $('.errorMissingInputs')};
 
     open() {
         return super.open('form-login.html');

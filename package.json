@@ -17,7 +17,7 @@
     "wdio-chromedriver-service": "^7.0.0"
   },
   "scripts": {
-    "test": "npx wdio run ./wdio.conf.js --spec testingLogin.js"
+    "test": "npx wdio run ./wdio.conf.js --spec testingRegister.js"
   },
   "repository": {
     "type": "git",

@@ -11,6 +11,7 @@ class RegisterPage extends Page {
     get btnSend () { return $('#send-btn') }
     get btnReset () { return $('#reset-btn') }
     get loginLink () { return $('#loginLink') }
+    get missingInputs () { return $('.errorMissingInputs') }
 
     open() {
         return super.open('form-register.html');
