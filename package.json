@@ -14,10 +14,11 @@
     "@wdio/spec-reporter": "^7.5.7",
     "chromedriver": "^90.0.0",
     "jasmine": "^3.7.0",
-    "wdio-chromedriver-service": "^7.0.0"
+    "wdio-chromedriver-service": "^7.0.0",
+    "wdio-intercept-service": "^4.1.4"
   },
   "scripts": {
-    "test": "npx wdio run ./wdio.conf.js --spec testingRegister.js"
+    "test": "npx wdio run ./wdio.conf.js --spec testingLogin.js"
   },
   "repository": {
     "type": "git",
